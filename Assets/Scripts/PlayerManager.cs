@@ -7,12 +7,14 @@ public class PlayerManager : MonoBehaviour
     public bool MoveByTouch, gameState, attackToTheBoss;
     private Vector3 Direction;
     private Rigidbody PlrRb;
+    private Animator PlrAnimator;
     [SerializeField] private float runSpeed, velocity, swipeSpeed, roadSpeed;
     public Transform road;
 
     void Start()
     {
         PlrRb = transform.GetChild(0).GetComponent<Rigidbody>();
+        PlrAnimator = transform.GetChild(0).GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -39,8 +41,14 @@ public class PlayerManager : MonoBehaviour
 
             road.position = new Vector3(0f, 0f, Mathf.SmoothStep(road.position.z, -100f, Time.deltaTime * roadSpeed));
 
+            PlrAnimator.SetFloat("speed", 1);
+
             /* foreach (var stickman_Anim in Rblst)
                  stickman_Anim.GetComponent<Animator>().SetFloat("run", 1f);*/
+        }
+        else
+        {
+            PlrAnimator.SetFloat("speed", 0);
         }
 
         if (PlrRb.velocity.magnitude > 0.5f)
