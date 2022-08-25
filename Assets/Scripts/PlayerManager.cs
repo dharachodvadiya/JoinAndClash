@@ -6,15 +6,18 @@ public class PlayerManager : MonoBehaviour
 {
     public bool MoveByTouch, gameState, attackToTheBoss;
     private Vector3 Direction;
-    private Rigidbody PlrRb;
-    private Animator PlrAnimator;
+    private List<Rigidbody> RbList = new List<Rigidbody>();
+    private List<Animator> AnimatorList = new List<Animator>(); 
     [SerializeField] private float runSpeed, velocity, swipeSpeed, roadSpeed;
     public Transform road;
 
+    public static PlayerManager Instance;
+
     void Start()
     {
-        PlrRb = transform.GetChild(0).GetComponent<Rigidbody>();
-        PlrAnimator = transform.GetChild(0).GetComponent<Animator>();
+        Instance = this;
+        RbList.Add(transform.GetChild(0).GetComponent<Rigidbody>());
+        AnimatorList.Add(transform.GetChild(0).GetComponent<Animator>());
     }
 
     // Update is called once per frame
@@ -41,23 +44,37 @@ public class PlayerManager : MonoBehaviour
 
             road.position = new Vector3(0f, 0f, Mathf.SmoothStep(road.position.z, -100f, Time.deltaTime * roadSpeed));
 
-            PlrAnimator.SetFloat("speed", 1);
+            //PlrAnimator.SetFloat("speed", 1);
+
+            for (int i = 0; i < AnimatorList.Count; i++)
+            {
+                AnimatorList[i].SetFloat("speed", 1);
+            }
 
             /* foreach (var stickman_Anim in Rblst)
                  stickman_Anim.GetComponent<Animator>().SetFloat("run", 1f);*/
         }
         else
         {
-            PlrAnimator.SetFloat("speed", 0);
+            //PlrAnimator.SetFloat("speed", 0);
+            for (int i = 0; i < AnimatorList.Count; i++)
+            {
+                AnimatorList[i].SetFloat("speed", 0);
+            }
         }
 
-        if (PlrRb.velocity.magnitude > 0.5f)
+        for (int i = 0; i < RbList.Count; i++)
         {
-            PlrRb.rotation = Quaternion.Slerp(PlrRb.rotation, Quaternion.LookRotation(PlrRb.velocity), Time.deltaTime * velocity);
-        }
-        else
-        {
-            PlrRb.rotation = Quaternion.Slerp(PlrRb.rotation, Quaternion.identity, Time.deltaTime * velocity);
+            RbList[i].velocity = new Vector3(Direction.x * Time.fixedDeltaTime * swipeSpeed, 0f, 0f);
+
+            if (RbList[i].velocity.magnitude > 0.5f)
+            {
+                RbList[i].rotation = Quaternion.Slerp(RbList[i].rotation, Quaternion.LookRotation(RbList[i].velocity), Time.deltaTime * velocity);
+            }
+            else
+            {
+                RbList[i].rotation = Quaternion.Slerp(RbList[i].rotation, Quaternion.identity, Time.deltaTime * velocity);
+            }
         }
     }
 
@@ -65,12 +82,31 @@ public class PlayerManager : MonoBehaviour
     {
         if (MoveByTouch)
         {
-            PlrRb.velocity = new Vector3(Direction.x * Time.fixedDeltaTime * swipeSpeed, 0f, 0f);
+           // PlrRb.velocity = new Vector3(Direction.x * Time.fixedDeltaTime * swipeSpeed, 0f, 0f);
+
+            for (int i = 0; i < RbList.Count; i++)
+            {
+                RbList[i].velocity = new Vector3(Direction.x * Time.fixedDeltaTime * swipeSpeed, 0f, 0f);
+            }
 
         }
         else
         {
-            PlrRb.velocity = Vector3.zero;
+            //PlrRb.velocity = Vector3.zero;
+
+            for (int i = 0; i < RbList.Count; i++)
+            {
+                RbList[i].velocity = Vector3.zero;
+            }
         }
+    }
+
+    public void addPlayer(GameObject objPlayer)
+    {        
+        objPlayer.transform.SetParent(transform);
+        RbList.Add(objPlayer.GetComponent<Rigidbody>());
+        AnimatorList.Add(objPlayer.GetComponent<Animator>());
+
+
     }
 }
