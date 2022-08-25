@@ -27,5 +27,18 @@ public class PlayerManager : MonoBehaviour
         {
             MoveByTouch = false;
         }
+
+        if (MoveByTouch)
+        {
+
+            Direction.x = Mathf.Lerp(Direction.x, Input.GetAxis("Mouse X"), Time.deltaTime * runSpeed);
+
+            Direction = Vector3.ClampMagnitude(Direction, 1f);
+
+            road.position = new Vector3(0f, 0f, Mathf.SmoothStep(road.position.z, -100f, Time.deltaTime * roadSpeed));
+
+           /* foreach (var stickman_Anim in Rblst)
+                stickman_Anim.GetComponent<Animator>().SetFloat("run", 1f);*/
+        }
     }
 }

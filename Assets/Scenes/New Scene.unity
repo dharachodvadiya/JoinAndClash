@@ -370,6 +370,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346709324}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &385531547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fc508c679ca791547887280709a876cd, type: 3}
+  m_PrefabInstance: {fileID: 588075367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &588075367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -440,6 +445,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fc508c679ca791547887280709a876cd, type: 3}
   m_PrefabInstance: {fileID: 588075367}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &588075371
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385531547}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0000014, y: 0.21343203, z: 12.049694}
+  m_Center: {x: 0, y: -0.000000014901161, z: -0.074463606}
 --- !u!1 &729099095
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,7 +753,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!1 &1528911282
 GameObject:
@@ -769,11 +787,11 @@ MonoBehaviour:
   MoveByTouch: 0
   gameState: 0
   attackToTheBoss: 0
-  runSpeed: 0
-  velocity: 0
-  swipeSpeed: 0
-  roadSpeed: 0
-  road: {fileID: 0}
+  runSpeed: 5
+  velocity: 5
+  swipeSpeed: 0.5
+  roadSpeed: 0.5
+  road: {fileID: 309240281}
 --- !u!4 &1528911284
 Transform:
   m_ObjectHideFlags: 0
@@ -887,6 +905,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745093130}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1906021093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fc508c679ca791547887280709a876cd, type: 3}
+  m_PrefabInstance: {fileID: 874103086}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1906021096
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906021093}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0000014, y: 0.21343203, z: 12.049694}
+  m_Center: {x: 0, y: -0.000000014901161, z: -0.074463606}
 --- !u!1001 &2110795846
 PrefabInstance:
   m_ObjectHideFlags: 0
