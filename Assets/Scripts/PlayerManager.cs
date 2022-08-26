@@ -65,8 +65,7 @@ public class PlayerManager : MonoBehaviour
 
         for (int i = 0; i < RbList.Count; i++)
         {
-            RbList[i].velocity = new Vector3(Direction.x * Time.fixedDeltaTime * swipeSpeed, 0f, 0f);
-
+           
             if (RbList[i].velocity.magnitude > 0.5f)
             {
                 RbList[i].rotation = Quaternion.Slerp(RbList[i].rotation, Quaternion.LookRotation(RbList[i].velocity), Time.deltaTime * velocity);
