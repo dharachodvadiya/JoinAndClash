@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Add
+  - boss
   layers:
   - Default
   - TransparentFX

@@ -11,7 +11,8 @@ public class RecruitMennt : MonoBehaviour
         {
             PlayerManager.Instance.addPlayer(collision.gameObject);
 
-            if(!collision.gameObject.GetComponent<RecruitMennt>())
+            collision.gameObject.GetComponent<MemberManager>().member = true;
+            if (!collision.gameObject.GetComponent<RecruitMennt>())
             {
                 collision.gameObject.AddComponent<RecruitMennt>();
             }
