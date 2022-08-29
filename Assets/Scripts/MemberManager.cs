@@ -113,5 +113,31 @@ public class MemberManager : MonoBehaviour
                 BossManager.Instance.LockOnTarget = false;
             }
         }
+
+        if (collision.collider.CompareTag("obstacle"))
+        {
+            Instantiate(Particle_Death, transform.position, Quaternion.identity, PlayerManager.Instance.road);
+
+            if (gameObject.name != PlayerManager.Instance.RbList[0].name)
+            {
+                gameObject.SetActive(false);
+                transform.parent = null;
+            }
+            else
+            {
+                _capsuleCollider.enabled = false;
+                transform.GetChild(0).gameObject.SetActive(false);
+                transform.GetChild(1).gameObject.SetActive(false);
+            }
+
+            for (int i = 0; i < BossManager.Instance.Enemies.Count; i++)
+            {
+                if (BossManager.Instance.Enemies[i].name == gameObject.name)
+                {
+                    BossManager.Instance.Enemies.RemoveAt(i);
+                    break;
+                }
+            }
+        }
     }
 }
