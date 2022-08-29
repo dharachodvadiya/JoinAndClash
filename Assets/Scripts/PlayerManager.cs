@@ -18,7 +18,7 @@ public class PlayerManager : MonoBehaviour
         Instance = this;
         RbList.Add(transform.GetChild(0).GetComponent<Rigidbody>());
         AnimatorList.Add(transform.GetChild(0).GetComponent<Animator>());
-        gameState = true;
+       // gameState = true;
     }
 
     bool isBossDead= false;
