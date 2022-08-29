@@ -21,6 +21,7 @@ public class PlayerManager : MonoBehaviour
         gameState = true;
     }
 
+    bool isBossDead= false;
     // Update is called once per frame
     void Update()
     {
@@ -76,6 +77,17 @@ public class PlayerManager : MonoBehaviour
                 else
                 {
                     RbList[i].rotation = Quaternion.Slerp(RbList[i].rotation, Quaternion.identity, Time.deltaTime * velocity);
+                }
+            }
+        }
+        else
+        {
+            if (!BossManager.Instance.BossIsAlive && !isBossDead)
+            {
+                isBossDead = true;
+                for (int i = 0; i < RbList.Count; i++)
+                {
+                    RbList[i].GetComponent<Animator>().SetFloat("attackMode", 4);
                 }
             }
         }

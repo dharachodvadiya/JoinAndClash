@@ -5116,8 +5116,8 @@ MonoBehaviour:
   Health_bar_amount: {fileID: 1161683023}
   Health: 0
   Particle_Death: {fileID: 0}
-  maxDistance: 0
-  minDistance: 0
+  maxDistance: 3
+  minDistance: 0.5
 --- !u!54 &891990479
 Rigidbody:
   m_ObjectHideFlags: 0
