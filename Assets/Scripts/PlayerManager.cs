@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     public bool MoveByTouch, gameState, attackToTheBoss;
     private Vector3 Direction;
-    private List<Rigidbody> RbList = new List<Rigidbody>();
+    public List<Rigidbody> RbList = new List<Rigidbody>();
     private List<Animator> AnimatorList = new List<Animator>(); 
     [SerializeField] private float runSpeed, velocity, swipeSpeed, roadSpeed;
     public Transform road;

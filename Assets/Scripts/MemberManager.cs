@@ -77,4 +77,41 @@ public class MemberManager : MonoBehaviour
         character_animator.SetFloat("attackMode", UnityEngine.Random.Range(0, 3));
 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("damage"))
+        {
+            Health--;
+            if (Health <= 0)
+            {
+                Instantiate(Particle_Death, transform.position, Quaternion.identity);
+
+                if (gameObject.name != PlayerManager.Instance.RbList[0].name)
+                {
+                    gameObject.SetActive(false);
+                    transform.parent = null;
+                }
+                else
+                {
+                    _capsuleCollider.enabled = false;
+                    transform.GetChild(0).gameObject.SetActive(false);
+                    transform.GetChild(1).gameObject.SetActive(false);
+                }
+
+
+
+                for (int i = 0; i < BossManager.Instance.Enemies.Count; i++)
+                {
+                    if (BossManager.Instance.Enemies[i].name == gameObject.name)
+                    {
+                        BossManager.Instance.Enemies.RemoveAt(i);
+                        break;
+                    }
+                }
+
+                BossManager.Instance.LockOnTarget = false;
+            }
+        }
+    }
 }
