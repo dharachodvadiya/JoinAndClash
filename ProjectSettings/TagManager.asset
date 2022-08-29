@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Add
   - boss
+  - hit
   layers:
   - Default
   - TransparentFX
@@ -14,9 +15,9 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
+  - Hide
+  - Stickman
+  - Boss
   - 
   - 
   - 

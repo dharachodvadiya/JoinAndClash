@@ -60,7 +60,7 @@ public class MemberManager : MonoBehaviour
 
             character_animator.SetBool("fight", true);
 
-            MinDistanceOfEnemy = MaxDistanceOfEnemy;
+            //MinDistanceOfEnemy = MaxDistanceOfEnemy;
 
             rb.velocity = Vector3.zero;
         }
